@@ -8,11 +8,14 @@ import java.util.List;
  */
 public class Test {
     public static void main(String[] args) {
-        List <Student> studentList = new ArrayList<>();
-        Student thang = new Student("1231413456", "Thang", "Male", 20);
-        Student duong = new Student("1241424141", "Duong", "Male", 20);
+        List<Student> studentList = new ArrayList<>();
+        StudentManager studentManager = new StudentManager(studentList);
+        Student thang = new Student("1231413456", "Thắng", "Male", 20);
+        Student duong = new Student("1241424141", "Dương", "Male", 20);
         studentList.add(thang);
         studentList.add(duong);
-        StudentDataAccess.writeToBinaryFile(studentList);
+//        StudentDataAccess.writeToBinaryFile(studentList);
+//        StudentDataAccess.readFromBinaryFile("StudentList.txt");
+        StudentDataAccess.writeToTextFile(studentList);
     }
 }

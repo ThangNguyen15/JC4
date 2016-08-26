@@ -1,8 +1,7 @@
 package org.activestudy.student.manager;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,12 +16,42 @@ public class StudentDataAccess {
             FileOutputStream outFile = new FileOutputStream("StudentList.txt");
             ObjectOutputStream outStream = new ObjectOutputStream(outFile);
             for (int i = 0; i < studentList.size(); i++) {
-                Student tempStudent = studentList.get(i);
-                outStream.writeObject(tempStudent);
+                outStream.writeObject(studentList.get(i));
             }
             outStream.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-        catch (IOException ex) {
+    }
+
+    public static List<Student> readFromBinaryFile(String path) {
+        List<Student> studentList = new ArrayList<>();
+        try {
+            FileInputStream inFile = new FileInputStream(path);
+            ObjectInputStream inStream = new ObjectInputStream(inFile);
+            Student student;
+            while ((student = (Student)inStream.readObject()) != null) {
+                studentList.add(student);
+            }
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println(studentList.toString());
+        return studentList;
+    }
+
+    public static void writeToTextFile(List<Student> studentList) {
+        try {
+            FileWriter outFile = new FileWriter("ListStudent.txt");
+            BufferedWriter outStream = new BufferedWriter(outFile);
+            String content;
+            content = studentList.toString();
+
+            outStream.write(content);
+            outStream.close();
+        }
+        catch (Exception ex) {
             ex.printStackTrace();
         }
     }

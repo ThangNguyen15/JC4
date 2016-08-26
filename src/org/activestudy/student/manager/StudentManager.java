@@ -75,8 +75,4 @@ public class StudentManager {
         }
         return false;
     }
-
-    public List<Student> getStudentList() {
-        return studentList;
-    }
 }
