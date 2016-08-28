@@ -1,4 +1,4 @@
-package org.activestudy.student.manager;
+package org.activestudy.file.io.student.manager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,9 @@ import java.util.List;
  */
 public class StudentManager {
     private List <Student> studentList = new ArrayList<>();
+
+    public StudentManager() {
+    }
 
     public StudentManager(List<Student> studentList) {
     }
@@ -33,8 +36,11 @@ public class StudentManager {
             studentList.add(student);
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
+
 
     public boolean removeStudent (String id) {
         for (int i = 0; i < studentList.size(); i++) {
@@ -74,5 +80,17 @@ public class StudentManager {
             }
         }
         return false;
+    }
+
+    public String showStudent() {
+        String listOfStudent = "";
+        for (int i = 0; i < studentList.size(); i++) {
+            listOfStudent += studentList.get(i).toString() + "\n";
+        }
+        return listOfStudent;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
     }
 }

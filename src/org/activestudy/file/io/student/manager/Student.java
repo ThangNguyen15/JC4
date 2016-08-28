@@ -1,4 +1,4 @@
-package org.activestudy.student.manager;
+package org.activestudy.file.io.student.manager;
 
 import java.io.Serializable;
 
@@ -11,7 +11,12 @@ public class Student implements Serializable{
     private String gender;
     private int age;
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Student() {
+
     }
 
     public Student(String id, String name, String gender, int age) {
